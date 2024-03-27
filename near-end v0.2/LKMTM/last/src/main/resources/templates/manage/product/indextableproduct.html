@@ -1,0 +1,61 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<div class="container-fluid">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-8">
+      <div class="card shadow mb-5">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">List Product</h6>
+          <div class="dropdown no-arrow">
+            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+              <div class="dropdown-header">Dropdown Header:</div>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <h1 th:text="${productsTitle}" style="text-align: center"></h1>
+          <a th:text="${productadd}" th:href="@{/product/addproduct}">Thêm mới</a>
+          <table class="table">
+            <tr>
+              <th>productId</th>
+              <th>productName</th>
+              <th>imgProduct</th>
+              <th>price</th>
+              <th>description</th>
+              <th>quantity</th>
+              <th>warranty</th>
+              <th>Action</th>
+            </tr>
+            <tr th:each="product: ${products}">
+              <td th:text="${product.productId}"></td>
+              <td th:text="${product.productName}"></td>
+              <td>
+                <img th:src="@{'data:image/png;base64,' + ${product.imgProduct}}" alt="" style="width: 100px; height: 100px;">
+              </td>
+              <td th:text="${product.price}"></td>
+              <td th:text="${product.description}"></td>
+              <td th:text="${product.quantity}"></td>
+              <td th:text="${product.warranty}"></td>
+              <td th:text="${product.category.getCategoryname()}"></td>
+
+              <td>
+                <a th:href="@{/products/edit/{id}(id=${product.productId})}">Sửa</a>
+                <a th:href="@{/products/delete/{id}(id=${product.productId})}" onclick="return confirm('Are you sure?')">Xoá</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

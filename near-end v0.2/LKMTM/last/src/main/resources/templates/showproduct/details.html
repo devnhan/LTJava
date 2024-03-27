@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Gear Shop Online</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+  <link href="css/slider.css" rel="stylesheet" type="text/css" media="all"/>
+  <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="js/move-top.js"></script>
+  <script type="text/javascript" src="js/easing.js"></script>
+  <script type="text/javascript" src="js/startstop-slider.js"></script>
+</head>
+<body>
+<section class="detail-product">
+  <div class="wrap-title">
+    <div class="title"></div>
+    <span>Thông tin sản phẩm</span>
+  </div>
+
+  <div class="detail-container">
+
+    <div class="image-product">
+      <img th:src="@{'data:image/png;base64,' + ${product.imgProduct}}" alt="">
+
+    </div>
+
+    <div class="content">
+      <h3 class="name-product" th:text="${product.productName}"></h3>
+      <div class="price">
+        Giá:
+        <span th:text="${product.price}">đ</span>
+      </div>
+
+      <div class="describe">
+        Mô tả:
+        <span th:text="${product.description}"></span>
+      </div>
+
+
+      <div class="describe">
+        Số lượng:
+        <span  th:text="${product.quantity}"></span>
+      </div>
+
+      <div class="describe">
+        Ngày bảo hành:
+        <span  th:text="${product.warranty}"></span>
+      </div>
+
+
+      <button type="submit" class="btn-submit">
+        <i class="fa-solid fa-bag-shopping" style="margin-right: .7rem"></i>
+        ADD TO CART
+      </button>
+    </div>
+  </div>
+</section>
+</body>
+</html>

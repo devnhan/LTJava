@@ -1,0 +1,154 @@
+<!--<!DOCTYPE html>-->
+<!--<html  xmlns:th="http://www.thymeleaf.org">-->
+<!--<body id="page-top">-->
+<!--<div class="wrapper">-->
+<!--  &lt;!&ndash; Main Content &ndash;&gt;-->
+<!--  <div id="content">-->
+<!--    <h1>Add Product</h1>-->
+<!--    <form method="post" th:action="@{/themsanpham}" enctype="multipart/form-data" th:object="${products}">-->
+<!--      <input type="hidden" th:field="*{productId}">-->
+<!--      <div class="col-6 mb-3">-->
+<!--        <label for="productName" class="form-label">ProductName:</label>-->
+<!--        <input type="text" class="form-control" th:field="*{productName}" id="productName">-->
+<!--        &lt;!&ndash;                    <span class="text-danger" th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></span>&ndash;&gt;-->
+<!--      </div>-->
+<!--        <div class="col-6 mb-3">-->
+<!--          <label for="imgProduct" class="form-label">Image:</label>-->
+<!--          <input type="file" class="form-control" th:field="*{imgProduct}" id="imgProduct" >-->
+<!--        </div>-->
+<!--        <div class="col-6 mb-3">-->
+<!--          <label for="price" class="form-label">Price:</label>-->
+<!--          <input type="text" class="form-control" th:field="*{price}" id="price" >-->
+<!--          &lt;!&ndash;                    <span class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="col-6 mb-3">-->
+<!--          <label for="description" class="form-label">Description:</label>-->
+<!--          <input type="text" class="form-control" th:field="*{description}" id="description" >-->
+<!--        </div>-->
+<!--        <div class="col-6 mb-3">-->
+<!--          <label for="quantity" class="form-label">Quantity:</label>-->
+<!--          <input type="text" class="form-control" th:field="*{quantity}" id="quantity" >-->
+<!--        </div>-->
+<!--        <div class="col-6 mb-3">-->
+<!--          <label for="warranty" class="form-label">Warranty:</label>-->
+<!--          <input type="text" class="form-control" th:field="*{warranty}" id="warranty" >-->
+<!--        </div>-->
+
+<!--        <div class="col-6 mb-3">-->
+<!--          <label for="category" class="form-label">Category:</label>-->
+<!--          <select class="form-control" id="category" name="category.id">-->
+<!--            <option value="">&#45;&#45;Select Category</option>-->
+<!--            <option th:each="category :${categories}" th:value="${category.categoryID}"-->
+<!--                    th:text="${category.categoryname}"></option>-->
+<!--          </select>-->
+<!--          <span class="text-danger" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></span>-->
+<!--        </div>-->
+<!--        <input type="submit" class="btn btn-primary" value="Save">-->
+<!--      </form>-->
+<!--    </form>-->
+<!--    <br>-->
+<!--    <a href="@{/products}">Back To List</a>-->
+<!--    &lt;!&ndash;              <th:block th:replace="AdminMainLayout :: topbarAdmin"></th:block>&ndash;&gt;-->
+<!--    <div class="container-fluid">-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<html  xmlns:th="http://www.thymeleaf.org">
+<div class="container-fluid">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-8">
+      <div class="card shadow mb-5">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">New product!</h6>
+          <div class="dropdown no-arrow">
+            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+              <div class="dropdown-header">Dropdown Header:</div>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+        <form method="post" th:action="@{/add-product}" enctype="multipart/form-data" th:object="${products}">
+          <div id="notification"></div>
+
+          <input name="__RequestVerificationToken" type="hidden" value="your_token_here" />
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6 mb-6">
+                <label for="productName" class="form-label">ProductName:</label>
+                <input type="text" class="form-control" th:field="*{productName}" id="productName">
+              </div>
+              <div class="col-6 mb-3">
+                <label for="category" class="form-label">Category:</label>
+                <select class="form-control" id="category" name="category.id">
+                  <option value="">--Chọn danh mục--</option>
+                  <option th:each="category :${categories}" th:value="${category.categoryID}"
+                          th:text="${category.categoryname}"></option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="price" class="form-label">Price:</label>
+                  <input type="text" class="form-control" th:field="*{price}" id="price" >
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group">
+              <label for="description" class="form-label">Description:</label>
+              <input type="text" class="form-control" th:field="*{description}" id="description" >
+            </div>
+            <div class="form-group">
+              <label for="quantity" class="form-label">Quantity:</label>
+              <input type="text" class="form-control" th:field="*{quantity}" id="quantity" >
+            </div>
+            <div class="form-group">
+              <label for="warranty" class="form-label">Warranty:</label>
+              <input type="text" class="form-control" th:field="*{warranty}" id="warranty" >
+            </div>
+            <div class="form-group">
+              <label for="imgProduct">Ảnh sản phẩm:</label>
+              <div class="custom-file">
+                <label for="imgProduct" class="form-label">Image:</label>
+                <input type="file" class="form-control" th:field="*{imgProduct}" id="imgProduct" >
+              </div>
+              <div class="mt-3">
+                <img id="image-preview" class="img-thumbnail" width="120" height="120">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary btn-icon-split btn-sm" id="upload-button">
+                <span class="icon text-white-50">
+                  <i class="fas fa-check"></i>
+                </span>
+                  <span class="text">Thêm</span>
+                </button>
+                <h1 class="showno"></h1>
+                <p class="text-muted">Các trường (*)là bắt buộc. Vui lòng điền đầy đủ!</p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
+<!-- /.container-fluid -->

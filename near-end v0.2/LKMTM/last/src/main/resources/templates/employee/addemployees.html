@@ -1,0 +1,125 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<div class="container-fluid">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-8">
+      <div class="card shadow mb-5">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">New Employee</h6>
+          <div class="dropdown no-arrow">
+            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+              <div class="dropdown-header">Dropdown Header:</div>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+        <form method="post" th:action="@{/add-employee}" enctype="multipart/form-data" th:object="${users}">
+          <div id="notification"></div>
+
+          <input name="__RequestVerificationToken" type="hidden" value="your_token_here" />
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6 mb-6">
+                <label class="username" for="username">Name: </label>
+                <input class="form-control" type="text" th:field="*{username}" id="username">
+              </div>
+            </div>
+<!--            <div class="form-group">-->
+<!--              <label class="form-label" for="password">Password: </label>-->
+<!--              <input class="form-control" type="text" th:field="*{password}" id="password">-->
+<!--            </div>-->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label" for="email">Email: </label>
+                  <input class="form-control" type="text" th:field="*{email}" id="email">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="fullname" for="fullname">fullname:</label>
+              <input class="form-control" type="text" th:field="*{fullname}" id="fullname">
+            </div>
+            <div class="form-group">
+              <label class="address" for="address">Address:</label>
+              <input class="form-control" type="text" th:field="*{address}" id="address">
+            </div>
+            <div class="form-group">
+              <label class="phone" for="phone">PhoneNumber:</label>
+              <input class="form-control" type="text" th:field="*{phone}" id="phone">
+            </div>
+<!--            <div class="form-group">-->
+<!--              <label class="form-label" for="password">Password: </label>-->
+<!--              <input class="form-control" type="text" th:field="*{password}" id="password">-->
+<!--            </div>-->
+          </div>
+          <form th:action="@{/users/add} " th:object="${users}" method="post" enctype="multipart/form-data">
+
+            <div class="row">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary btn-icon-split btn-sm" id="upload-button">
+                <span class="icon text-white-50">
+                  <i class="fas fa-check"></i>
+                </span>
+                  <span class="text">Save</span>
+                </button>
+                <h1 class="showno"></h1>
+                <p class="text-muted">Các trường (*)là bắt buộc. Vui lòng điền đầy đủ!</p>
+              </div>
+              <!--              <script>-->
+              <!--                const imageInput = document.querySelector('#image-input');-->
+              <!--                const imagePreview = document.querySelector('#image-preview');-->
+              <!--                const dishname=document.querySelector('#dishName');-->
+              <!--                const uploadButton = document.querySelector('#upload-button');-->
+              <!--                imageInput.addEventListener('change', () => {-->
+              <!--                  const file = imageInput.files[0];-->
+              <!--                  if (file) {-->
+              <!--                    const reader = new FileReader();-->
+              <!--                    reader.onload = () => {-->
+              <!--                      imagePreview.src = reader.result;-->
+              <!--                    };-->
+              <!--                    reader.readAsDataURL(file);-->
+              <!--                  }-->
+              <!--                });-->
+              <!--                uploadButton.addEventListener('click', (event) => {-->
+              <!--                  event.preventDefault(); // Prevent the default action of the button-->
+              <!--                  const file = imageInput.files[0];-->
+              <!--                  if (!file) {-->
+              <!--                    // Display an error message if no file is selected-->
+              <!--                    alert('Bạn phải chọn một hình ảnh trước khi tải lên!');-->
+              <!--                    return;-->
+              <!--                  }-->
+              <!--                  const formData = new FormData();-->
+              <!--                  formData.append('image', file);-->
+              <!--                  formData.append('toppingName', toppingName.value); // Replace 'user_info' with the actual user info-->
+
+              <!--                  fetch('/api/topping/add', {-->
+              <!--                    method: 'POST',-->
+              <!--                    body: formData-->
+              <!--                  })-->
+              <!--                          .then(response => response.json())-->
+              <!--                          .then(data => {-->
+              <!--                            document.getElementById("notification").innerHTML = "<div class='alert alert-success'>Thêm sản phẩm thành công!</div>";-->
+              <!--                          })-->
+              <!--                          .catch(error => {--><!--                            document.getElementById("notification").innerHTML = "<div class='alert alert-danger'>Không thể thêm sản phẩm!</div>";-->
+              <!--                          });-->
+              <!--                });-->
+              <!--              </script>-->
+            </div>
+          </form>
+        </form>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</html>
